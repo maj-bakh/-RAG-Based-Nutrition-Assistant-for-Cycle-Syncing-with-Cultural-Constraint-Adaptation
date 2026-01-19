@@ -1,4 +1,5 @@
-Instaloader 
+Instaloader :est un outil Python open-source qui permet de télécharger des photos, vidéos, stories, commentaires et métadonnées (légendes, géolocalisations, etc.)
+
 OCR (Infographics) [EasyOCR, Tesseract] 
 (Menstrual, Follicular, Ovulatory, Luteal)
 
