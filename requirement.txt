@@ -15,3 +15,6 @@ probleme c est que Instaloader non disponible pour la recherche par mot-clé mai
 profiles ["manskis_wellness", "soul.body.mindd"] 
 
 
+etape suivante
+transformer les images en description a travers la technologie OCR 
+import easyocr : Importe la bibliothèque d'IA pour la reconnaissance visuelle de texte.
