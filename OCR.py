@@ -1,8 +1,6 @@
 import easyocr
 import os
 import glob
-
-
 # Initialiser le lecteur OCR avec l'anglais et l'arabe
 reader = easyocr.Reader(['en', 'ar'], gpu=False)
 

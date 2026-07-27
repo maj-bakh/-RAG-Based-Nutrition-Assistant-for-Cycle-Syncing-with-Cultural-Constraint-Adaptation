@@ -1,20 +1,3 @@
-Instaloader :est un outil Python open-source qui permet de télécharger des photos, vidéos, stories, commentaires et métadonnées (légendes, géolocalisations, etc.)
-
-OCR (Infographics) [EasyOCR, Tesseract] 
-(Menstrual, Follicular, Ovulatory, Luteal)
-
-Menstrual phase: Phase menstruelle or règles
-Follicular phase: Phase folliculaire
-Ovulatory phase: Phase ovulatoire or ovulation
-Luteal phase: Phase lutéale 
-
-https://www.instagram.com/explore/search/keyword/?q=foods%20for%20luteal%20phase [keyword search]
-
-
-probleme c est que Instaloader non disponible pour la recherche par mot-clé mais uniquement avec profiles
-profiles ["manskis_wellness", "soul.body.mindd"] 
-
-
-etape suivante
-transformer les images en description a travers la technologie OCR 
-import easyocr : Importe la bibliothèque d'IA pour la reconnaissance visuelle de texte.
+apify-client
+requests
+easyocr
