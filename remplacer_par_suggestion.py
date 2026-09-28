@@ -30,10 +30,16 @@ SUGGESTIONS_MAP = {
     "sang": "substitut végétal",
     "gras animal": "huile végétale",
     "foie gras": "pâté de légumes",
+<<<<<<< HEAD
     "suif": "margarine végétale",
 }
 
 
+=======
+    "suif": "margarine végétale"
+}
+
+>>>>>>> 014bf9e (Séparation des ingredients avec suggection halal)
 def suggest_for_text(text: str) -> dict:
     """Suggère des alternatives uniquement aux termes détectés haram par l'autre script."""
     detected_haram = find_and_categorize(text)["haram"]
@@ -81,7 +87,10 @@ def sanitize_with_suggestions(text: str) -> tuple[str, list]:
     ]
     return result["texte_suggere"], replacements
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 014bf9e (Séparation des ingredients avec suggection halal)
 def process_file(input_path: str):
     p = Path(input_path)
     if not p.is_file():
@@ -92,10 +101,17 @@ def process_file(input_path: str):
     result = suggest_for_text(content)
     cleaned_content = result["texte_suggere"]
     reps = result["remplacements"]
+<<<<<<< HEAD
 
     output_path = p.with_stem(f"{p.stem}_suggested")
     output_path.write_text(cleaned_content, encoding="utf-8")
 
+=======
+    
+    output_path = p.with_stem(f"{p.stem}_suggested")
+    output_path.write_text(cleaned_content, encoding="utf-8")
+    
+>>>>>>> 014bf9e (Séparation des ingredients avec suggection halal)
     print(f"✅ Fichier traité: {output_path.name}")
     print(
         "Termes haram détectés: "
@@ -220,6 +236,11 @@ def main():
             )
             print(f"Rapport enregistré dans: {output_path}")
 
+<<<<<<< HEAD
 
 if __name__ == "__main__":
     main()
+=======
+if __name__ == "__main__":
+    main()
+>>>>>>> 014bf9e (Séparation des ingredients avec suggection halal)
