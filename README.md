@@ -6,6 +6,14 @@ Ce projet contient un prototype pour :
 - analyser le texte pour détecter des termes halal / haram / à vérifier,
 - proposer des recommandations de repas selon la phase du cycle.
 
+
+## Comptes Instagram analysés
+
+Le scraper récupère automatiquement les **5 derniers posts** des comptes suivants :
+
+- **soul.body.mindd** : https://www.instagram.com/p/DTWDVfAjgXA/?img_index=4&igsh=eDU4ZWdneGU3M21i
+- **[Manskis_wellness]** : https://www.instagram.com/p/DTECXahkvhW/?img_index=7&igsh=MXU1NmxmODh5eHBsMw==
+
 ## Fichiers principaux
 
 - `scraper.py` : récupération des publications Instagram via Apify.
