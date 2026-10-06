@@ -1,130 +1,183 @@
-````markdown
-# CycleSync Halal — RAG-Based Nutrition Assistant for Cycle Syncing with Cultural Constraint Adaptation
+# CycleSync Halal
+
+### RAG-Based Nutrition Assistant for Cycle Syncing with Cultural Constraint Adaptation
 
 <p align="center">
   <img src="image.png" alt="CycleSync Halal Logo" width="280"/>
 </p>
 
 <p align="center">
-  <strong>An intelligent nutrition assistant combining menstrual cycle phases with cultural and religious dietary constraints</strong><br/>
-  Instagram Scraping → Multilingual OCR → Halal/Haram Analysis → Personalized Recommendations
+  An intelligent nutrition assistant combining menstrual cycle phases with cultural and religious dietary constraints.
 </p>
 
----
+<p align="center">
+  Instagram Data Collection · Multilingual OCR · Ingredient Analysis · Halal/Haram Classification · Personalized Recommendations
+</p>
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [About the Project](#about-the-project)
-- [Architecture Overview](#architecture-overview)
-- [Key Features](#key-features)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Analyzed Instagram Accounts](#analyzed-instagram-accounts)
-- [Security](#security)
-- [Disclaimer](#disclaimer)
-- [License](#license)
-- [Author](#author)
-
----
+* [About the Project](#about-the-project)
+* [Team](#team)
+* [Objectives](#objectives)
+* [Architecture](#architecture)
+* [Key Features](#key-features)
+* [Project Structure](#project-structure)
+* [Technologies](#technologies)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Analyzed Instagram Accounts](#analyzed-instagram-accounts)
+* [Security](#security)
+* [Limitations and Disclaimer](#limitations-and-disclaimer)
+* [License](#license)
 
 ## About the Project
 
-**CycleSync Halal** is a prototype of a nutrition assistant based on **Retrieval-Augmented Generation (RAG)**, designed to provide food recommendations according to the **menstrual cycle phase** while considering **cultural and religious dietary constraints (Halal/Haram)**.
+CycleSync Halal is a research and experimental prototype based on Retrieval-Augmented Generation (RAG), designed to explore personalized nutrition recommendations according to menstrual cycle phases while considering cultural and religious dietary constraints.
+
+The project combines data collection from social media, multilingual Optical Character Recognition (OCR), ingredient extraction, Halal/Haram classification, and cycle-based nutritional recommendations.
 
 ### Problem Statement
 
-Women looking to adapt their nutrition to their menstrual cycle may need resources that consider both:
+Existing nutrition resources may provide recommendations based on menstrual cycle phases without considering cultural or religious dietary requirements.
 
-- Nutritional needs associated with each menstrual cycle phase
-- Cultural and religious dietary restrictions such as Halal and Haram
+This project explores an approach that considers both:
 
-### Solution
+* Nutritional needs associated with different menstrual cycle phases
+* Cultural and religious dietary constraints, particularly Halal and Haram ingredients
 
-The project implements an automated pipeline that:
+### Proposed Approach
 
-1. **Scrapes** Instagram posts from selected wellness accounts using **Apify**
-2. **Extracts text** from recipe and food images using **EasyOCR**
-3. Supports multilingual text extraction, including **English, French, and Arabic**
-4. **Analyzes ingredients** using a Halal/Haram knowledge base
-5. **Classifies ingredients** into different compatibility categories
-6. **Generates meal recommendations** according to the menstrual cycle phase
-7. Filters recommendations according to cultural and religious constraints
+The system follows a data processing pipeline:
 
----
+1. Collects food and wellness content from selected Instagram accounts using Apify.
+2. Extracts text from food images using EasyOCR.
+3. Processes multilingual content, including English, French, and Arabic.
+4. Identifies and analyzes ingredients.
+5. Classifies ingredients according to Halal/Haram compatibility.
+6. Associates food recommendations with menstrual cycle phases.
+7. Produces meal suggestions according to the selected phase and dietary constraints.
 
-## Architecture Overview
+## Team
+
+This project is developed by two contributors:
+
+| Role                      | Name          | GitHub                                         |
+| ------------------------- | ------------- | ---------------------------------------------- |
+| Project Lead              | Sara Elateif  | [@elateifsara](https://github.com/elateifsara) |
+| Developer & Data Engineer | Majda Bakhari | [@maj-bakh](https://github.com/maj-bakh)       |
+
+## Objectives
+
+The main objectives of the project are to:
+
+* Explore the use of RAG-based approaches for personalized nutrition.
+* Combine unstructured social media data with structured ingredient knowledge.
+* Process multilingual food-related content using OCR.
+* Identify potential Halal and Haram ingredients.
+* Provide recommendations according to menstrual cycle phases.
+* Explore the adaptation of AI-based nutrition systems to cultural constraints.
+
+## Architecture
+
+The overall pipeline is organized as follows:
 
 ```text
-┌─────────────────────┐     ┌──────────────────┐     ┌─────────────────────┐
-│    scraper.py       │     │      OCR.py      │     │ halal_haram_        │
-│                     │────▶│                  │────▶│ analyzer.py         │
-│ Apify Instagram     │     │ EasyOCR          │     │                     │
-│ Scraper             │     │ EN + FR + AR     │     │ • Classification    │
-│                     │     │                  │     │   Halal/Haram       │
-│ • soul.body.mindd   │     │ • Text extraction│     │ • Meal suggestions  │
-│ • manskis_wellness  │     │ • Post grouping  │     │ • Cycle phases      │
-└─────────────────────┘     └──────────────────┘     └─────────────────────┘
-          │                          │                         │
-          ▼                          ▼                         ▼
-   Scraped images              OCR results              Analysis results
-   + captions                  (.txt files)             + recommendations
-````
-
-### Workflow
-
-```text
-Instagram Posts
-       │
-       ▼
-   Apify Scraper
-       │
-       ▼
+Instagram Content
+       |
+       v
+Apify Instagram Scraper
+       |
+       v
 Images + Captions
-       │
-       ▼
-    EasyOCR
-       │
-       ▼
-Extracted Text
-       │
-       ▼
+       |
+       v
+Multilingual OCR
+(EasyOCR)
+       |
+       v
+Text Extraction
+       |
+       v
 Ingredient Extraction
-       │
-       ▼
-Halal/Haram Classification
-       │
-       ▼
+       |
+       v
+Halal/Haram Analysis
+       |
+       v
 Cycle Phase Analysis
-       │
-       ▼
+       |
+       v
 Personalized Recommendations
 ```
 
----
+### Main Components
+
+```text
+scraper.py
+    |
+    +-- Collects Instagram posts
+    |
+    v
+OCR.py
+    |
+    +-- Extracts text from images
+    |
+    v
+separer_ingredients.py
+    |
+    +-- Processes and separates ingredients
+    |
+    v
+halal_haram_analyzer.py
+    |
+    +-- Classifies ingredients
+    +-- Generates recommendations
+    |
+    v
+remplacer_par_suggestion.py
+    |
+    +-- Suggests alternative ingredients
+```
 
 ## Key Features
 
-| Feature                             | Description                                                |
-| ----------------------------------- | ---------------------------------------------------------- |
-| 📸 **Instagram Scraping**           | Automatic retrieval of posts using Apify                   |
-| 🔤 **Multilingual OCR**             | Text extraction from images using EasyOCR                  |
-| 🌍 **Multilingual Support**         | English, French and Arabic text processing                 |
-| ✅ **Halal/Haram Classification**    | Ingredient classification using a dedicated knowledge base |
-| 🍽️ **Cycle-Based Recommendations** | Meal recommendations according to menstrual cycle phases   |
-| 📂 **Automatic Organization**       | OCR results organized by profile and post                  |
-| 🔒 **API Security**                 | API token handled through environment variables            |
+### Instagram Data Collection
+
+The project uses Apify to collect food and wellness content from selected Instagram accounts.
+
+### Multilingual OCR
+
+EasyOCR is used to extract text from images, with support for:
+
+* English
+* French
+* Arabic
 
 ### Ingredient Classification
 
-| Category       | Description                                                            |
-| -------------- | ---------------------------------------------------------------------- |
-| `halal`        | Ingredients identified as halal                                        |
-| `haram`        | Ingredients identified as prohibited                                   |
-| `a_verifier`   | Ingredients requiring additional verification                          |
-| `halal_likely` | No prohibited ingredient detected, but classification remains cautious |
+Detected ingredients are classified into four categories:
 
----
+| Category       | Description                                                               |
+| -------------- | ------------------------------------------------------------------------- |
+| `halal`        | Ingredients identified as compatible with Halal requirements              |
+| `haram`        | Ingredients identified as prohibited                                      |
+| `a_verifier`   | Ingredients requiring additional verification                             |
+| `halal_likely` | No prohibited ingredient detected, but confirmation may still be required |
+
+### Cycle-Based Recommendations
+
+The system supports four menstrual cycle phases:
+
+| Phase      | Main Focus                                  |
+| ---------- | ------------------------------------------- |
+| Menstrual  | Iron, magnesium and supportive foods        |
+| Follicular | Light proteins and energy                   |
+| Ovulatory  | Antioxidants and omega-3                    |
+| Luteal     | Complex carbohydrates, fiber and vitamin B6 |
+
+### Ingredient Alternatives
+
+When an ingredient is considered incompatible or requires verification, the system can provide alternative ingredient suggestions.
 
 ## Project Structure
 
@@ -158,14 +211,24 @@ Personalized Recommendations
 └── image.png
 ```
 
----
+## Technologies
+
+| Technology | Purpose                                |
+| ---------- | -------------------------------------- |
+| Python     | Core development and data processing   |
+| Apify      | Instagram data collection              |
+| EasyOCR    | Multilingual text extraction           |
+| Pillow     | Image processing                       |
+| Requests   | HTTP requests                          |
+| JSON       | Structured data storage                |
+| RAG        | Retrieval-based information processing |
 
 ## Installation
 
 ### Prerequisites
 
-* Python **3.9+**
-* An **Apify API token**
+* Python 3.9 or later
+* An Apify account and API token
 
 ### Clone the Repository
 
@@ -181,65 +244,65 @@ cd -RAG-Based-Nutrition-Assistant-for-Cycle-Syncing-with-Cultural-Constraint-Ada
 pip install -r requirement.txt
 ```
 
-Or install the main dependencies manually:
+Alternatively:
 
 ```bash
 pip install apify-client requests easyocr pillow
 ```
 
----
+### Configure the Apify Token
 
-## Configure the Apify Token
-
-### Linux / macOS
+Linux / macOS:
 
 ```bash
 export APIFY_TOKEN="your_apify_token"
 ```
 
-### Windows CMD
+Windows CMD:
 
 ```bash
 set APIFY_TOKEN=your_apify_token
 ```
 
-### Windows PowerShell
+Windows PowerShell:
 
 ```bash
 $env:APIFY_TOKEN="your_apify_token"
 ```
 
-> ⚠️ Never commit your API token directly to the repository.
-
----
+Do not commit API credentials to the repository.
 
 ## Usage
 
-### 1. Scrape Instagram Posts
+### 1. Collect Instagram Data
 
 ```bash
 python scraper.py
 ```
 
-The scraper retrieves the configured Instagram posts and saves the corresponding images and captions.
+This step collects the configured Instagram content and stores the retrieved images and captions.
 
-### 2. Extract Text Using OCR
+### 2. Extract Text with OCR
 
 ```bash
 python OCR.py
 ```
 
-OCR results are stored in the `ocr_results/` directory.
+The extracted text is organized under:
+
+```text
+ocr_results/
+```
 
 ### 3. Analyze Ingredients
 
-Analyze OCR results for a specific profile:
+Analyze OCR results:
 
 ```bash
 python halal_haram_analyzer.py --scan ocr_results --profile soul.body.mindd
 ```
 
-Analyze text directly:
+Analyze a text directly:
 
 ```bash
 python halal_haram_analyzer.py --text "Poulet halal, riz, épinards et huile d'olive"
@@ -251,42 +314,36 @@ python halal_haram_analyzer.py --text "Poulet halal, riz, épinards et huile d'o
 python halal_haram_analyzer.py --recommend --phase luteal
 ```
 
-### Supported Cycle Phases
+Available phases:
 
-| Argument             | Phase      | Main Nutritional Focus           |
-| -------------------- | ---------- | -------------------------------- |
-| `--phase menstrual`  | Menstrual  | Iron, magnesium                  |
-| `--phase follicular` | Follicular | Light proteins, energy           |
-| `--phase ovulatory`  | Ovulatory  | Antioxidants, omega-3            |
-| `--phase luteal`     | Luteal     | Complex carbohydrates, fiber, B6 |
-
----
+```text
+menstrual
+follicular
+ovulatory
+luteal
+```
 
 ## Analyzed Instagram Accounts
 
-The scraper is configured to analyze the following accounts:
+The current pipeline is configured to work with the following accounts:
 
-| Account              | Platform  | Focus                            |
-| -------------------- | --------- | -------------------------------- |
-| **soul.body.mindd**  | Instagram | Holistic wellness & nutrition    |
-| **manskis_wellness** | Instagram | Women's wellness & cycle syncing |
+| Account                                                         | Focus                              |
+| --------------------------------------------------------------- | ---------------------------------- |
+| [soul.body.mindd](https://www.instagram.com/soul.body.mindd/)   | Holistic wellness and nutrition    |
+| [manskis_wellness](https://www.instagram.com/manskis_wellness/) | Women's wellness and cycle syncing |
 
-The scraper retrieves the configured recent posts from each account during execution.
-
----
+The scraper retrieves the configured recent posts from these accounts during execution.
 
 ## Security
 
-### API Key Protection
-
-The `APIFY_TOKEN` must be stored securely as an environment variable.
+API credentials should never be stored directly in the source code.
 
 Recommended practices:
 
-* Never hard-code API tokens in source files
-* Never commit API tokens to GitHub
-* Use a `.env` file locally when appropriate
-* Add `.env` to `.gitignore`
+* Store `APIFY_TOKEN` as an environment variable.
+* Keep `.env` files out of version control.
+* Never publish API keys on GitHub.
+* Rotate credentials if they are accidentally exposed.
 
 Example:
 
@@ -295,31 +352,30 @@ echo "APIFY_TOKEN=your_token" > .env
 echo ".env" >> .gitignore
 ```
 
----
+## Limitations and Disclaimer
 
-## Disclaimer
+This project is a research and experimental prototype.
 
-> ⚠️ **This project is a research and experimental prototype.**
+The Halal/Haram classification relies on a simplified knowledge base and keyword-based analysis. It should not be considered a definitive religious ruling or a substitute for certification from a qualified Halal authority.
 
-* The Halal/Haram classification is based on a simplified knowledge base and should not be considered a definitive religious ruling.
-* The nutritional recommendations are informational and do not replace professional nutritional or medical advice.
-* Users should consult qualified professionals for health-related or religious decisions.
+The nutritional recommendations are intended for research and informational purposes only. They do not constitute medical or nutritional advice and should not replace consultation with qualified healthcare or nutrition professionals.
 
----
+The project is intended to demonstrate a technical approach for combining data extraction, OCR, ingredient analysis, cultural constraints, and personalized recommendation systems.
 
 ## License
 
-This project is distributed under the **MIT License**.
+This project is distributed under the MIT License.
 
-See the [`LICENSE`](LICENSE) file for more information.
+See the `LICENSE` file for more information.
 
----
+## Authors
 
-## Author
+### Sara Elateif
 
-**Majda BAKHARI**
+Project Lead
+GitHub: [@elateifsara](https://github.com/elateifsara)
 
+### Majda Bakhari
+
+Developer & Data Engineer
 GitHub: [@maj-bakh](https://github.com/maj-bakh)
-
-```
-```
