@@ -26,6 +26,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Analyzed Instagram Accounts](#analyzed-instagram-accounts)
+* [Demo](#demo)
 * [Security](#security)
 * [Limitations and Disclaimer](#limitations-and-disclaimer)
 * [License](#license)
@@ -63,8 +64,23 @@ This project is developed by two contributors:
 
 | Role                      | Name          | GitHub                                         |
 | ------------------------- | ------------- | ---------------------------------------------- |
-| Project Lead              | Sara Elateif  | [@elateifsara](https://github.com/elateifsara) |
+| Product Owner             | Sara EL-ATEIF | [@elateifsara](https://github.com/elateifsara) |
 | Developer & Data Engineer | Majda Bakhari | [@maj-bakh](https://github.com/maj-bakh)       |
+
+### Roles and Contributions
+
+**Sara EL-ATEIF — Product Owner**
+
+* Provided the initial project idea.
+* Defined and clarified the cultural and religious constraints considered by the project.
+* Contributed to the definition of the project's functional direction and requirements.
+
+**Majda Bakhari — Developer & Data Engineer**
+
+* Designed and implemented the technical pipeline.
+* Developed the data collection, OCR, ingredient processing, and classification components.
+* Implemented the recommendation logic and project structure.
+* Managed the technical integration of the different components.
 
 ## Objectives
 
@@ -79,7 +95,7 @@ The main objectives of the project are to:
 
 ## Architecture
 
-The overall pipeline is organized as follows:
+The project follows a multi-stage data processing pipeline:
 
 ```text
 Instagram Content
@@ -110,33 +126,48 @@ Cycle Phase Analysis
 Personalized Recommendations
 ```
 
-### Main Components
+### System Workflow
 
 ```text
-scraper.py
-    |
-    +-- Collects Instagram posts
-    |
-    v
-OCR.py
-    |
-    +-- Extracts text from images
-    |
-    v
-separer_ingredients.py
-    |
-    +-- Processes and separates ingredients
-    |
-    v
-halal_haram_analyzer.py
-    |
-    +-- Classifies ingredients
-    +-- Generates recommendations
-    |
-    v
-remplacer_par_suggestion.py
-    |
-    +-- Suggests alternative ingredients
++-----------------------+
+| Instagram Data        |
+| Collection            |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Apify Scraper         |
+| Images + Captions     |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Multilingual OCR      |
+| English / French /    |
+| Arabic                |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Ingredient Extraction |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Halal / Haram         |
+| Classification        |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Cycle Phase Analysis  |
++-----------+-----------+
+            |
+            v
++-----------------------+
+| Personalized Food     |
+| Recommendations      |
++-----------------------+
 ```
 
 ## Key Features
@@ -302,7 +333,7 @@ Analyze OCR results:
 python halal_haram_analyzer.py --scan ocr_results --profile soul.body.mindd
 ```
 
-Analyze a text directly:
+Analyze text directly:
 
 ```bash
 python halal_haram_analyzer.py --text "Poulet halal, riz, épinards et huile d'olive"
@@ -333,6 +364,12 @@ The current pipeline is configured to work with the following accounts:
 | [manskis_wellness](https://www.instagram.com/manskis_wellness/) | Women's wellness and cycle syncing |
 
 The scraper retrieves the configured recent posts from these accounts during execution.
+
+## Demo
+
+A short demonstration of the project is available here:
+
+[Watch the project demo](https://drive.google.com/file/d/1xRCHAQOLqIw9c5Ah7C3ZkBSU2E8Y30Ng/view?usp=sharing)
 
 ## Security
 
@@ -370,9 +407,9 @@ See the `LICENSE` file for more information.
 
 ## Authors
 
-### Sara Elateif
+### Sara EL-ATEIF
 
-Project Lead
+Product Owner
 GitHub: [@elateifsara](https://github.com/elateifsara)
 
 ### Majda Bakhari
