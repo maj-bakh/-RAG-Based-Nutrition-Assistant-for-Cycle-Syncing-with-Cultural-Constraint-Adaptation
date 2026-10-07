@@ -33,9 +33,15 @@
 
 ## About the Project
 
-CycleSync Halal is a research and experimental prototype based on Retrieval-Augmented Generation (RAG), designed to explore personalized nutrition recommendations according to menstrual cycle phases while considering cultural and religious dietary constraints.
+CycleSync Halal is a research and experimental prototype that explores the use of Retrieval-Augmented Generation (RAG) to provide personalized nutrition recommendations based on menstrual cycle phases while taking cultural and religious dietary constraints into account.
 
-The project combines data collection from social media, multilingual Optical Character Recognition (OCR), ingredient extraction, Halal/Haram classification, and cycle-based nutritional recommendations.
+The project was developed around the idea of combining nutrition, artificial intelligence, data processing, and cultural awareness in a single system. It uses food and wellness content collected from selected Instagram accounts as a source of unstructured data, then processes this content through OCR, ingredient extraction, Halal/Haram classification, and recommendation components.
+
+The system is designed to answer a simple question:
+
+> How can nutrition recommendations be personalized according to both the menstrual cycle and an individual's cultural or religious dietary constraints?
+
+The project explores this question through a complete data processing pipeline, from social media content collection to ingredient analysis and personalized recommendations.
 
 ### Problem Statement
 
@@ -129,45 +135,45 @@ Personalized Recommendations
 ### System Workflow
 
 ```text
-+-----------------------+
-| Instagram Data        |
-| Collection            |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Apify Scraper         |
-| Images + Captions     |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Multilingual OCR      |
-| English / French /    |
-| Arabic                |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Ingredient Extraction |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Halal / Haram         |
-| Classification        |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Cycle Phase Analysis  |
-+-----------+-----------+
-            |
-            v
-+-----------------------+
-| Personalized Food     |
-| Recommendations      |
-+-----------------------+
++---------------------------+
+|     Instagram Content     |
+|      Data Collection      |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|      Apify Scraper        |
+|    Images + Captions      |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Multilingual OCR      |
+|  English / French / Arabic|
++-------------+-------------+
+              |
+              v
++---------------------------+
+|    Ingredient Extraction  |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   Halal / Haram Analysis  |
+|       Classification      |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Menstrual Cycle       |
+|      Phase Analysis       |
++-------------+-------------+
+              |
+              v
++---------------------------+
+| Personalized Nutrition    |
+|      Recommendations      |
++---------------------------+
 ```
 
 ## Key Features
