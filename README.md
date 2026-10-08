@@ -311,7 +311,7 @@ Project Structure
 │   └── manskis_wellness/
 │       └── ...
 │
-└── image.png
+└── system_workflow.png
 
 Technologies
 
