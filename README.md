@@ -1,3 +1,4 @@
+````markdown
 # CycleSync Halal
 
 ### RAG-Based Nutrition Assistant for Cycle Syncing with Cultural Constraint Adaptation
@@ -16,32 +17,32 @@
 
 ## Table of Contents
 
-* [About the Project](#about-the-project)
-* [Team](#team)
-* [Objectives](#objectives)
-* [Architecture](#architecture)
-* [Key Features](#key-features)
-* [Project Structure](#project-structure)
-* [Technologies](#technologies)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Analyzed Instagram Accounts](#analyzed-instagram-accounts)
-* [Demo](#demo)
-* [Security](#security)
-* [Limitations and Disclaimer](#limitations-and-disclaimer)
-* [License](#license)
+- [About the Project](#about-the-project)
+- [Team](#team)
+- [Objectives](#objectives)
+- [Architecture](#architecture)
+- [Key Features](#key-features)
+- [Project Structure](#project-structure)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Analyzed Instagram Accounts](#analyzed-instagram-accounts)
+- [Demo](#demo)
+- [Security](#security)
+- [Limitations and Disclaimer](#limitations-and-disclaimer)
+- [License](#license)
 
 ## About the Project
 
 CycleSync Halal is a research and experimental prototype that explores the use of Retrieval-Augmented Generation (RAG) to provide personalized nutrition recommendations based on menstrual cycle phases while taking cultural and religious dietary constraints into account.
 
-The project was developed around the idea of combining nutrition, artificial intelligence, data processing, and cultural awareness in a single system. It uses food and wellness content collected from selected Instagram accounts as a source of unstructured data, then processes this content through OCR, ingredient extraction, Halal/Haram classification, and recommendation components.
+The project combines nutrition, artificial intelligence, data processing, and cultural awareness in a single system. It uses food and wellness content collected from selected Instagram accounts as a source of unstructured data, then processes this content through OCR, ingredient extraction, Halal/Haram classification, and recommendation components.
 
-The system is designed to answer a simple question:
+The system is designed to explore the following question:
 
 > How can nutrition recommendations be personalized according to both the menstrual cycle and an individual's cultural or religious dietary constraints?
 
-The project explores this question through a complete data processing pipeline, from social media content collection to ingredient analysis and personalized recommendations.
+The project implements a complete data processing pipeline, from social media content collection to ingredient analysis and personalized recommendations.
 
 ### Problem Statement
 
@@ -49,8 +50,8 @@ Existing nutrition resources may provide recommendations based on menstrual cycl
 
 This project explores an approach that considers both:
 
-* Nutritional needs associated with different menstrual cycle phases
-* Cultural and religious dietary constraints, particularly Halal and Haram ingredients
+- Nutritional needs associated with different menstrual cycle phases
+- Cultural and religious dietary constraints, particularly Halal and Haram ingredients
 
 ### Proposed Approach
 
@@ -68,36 +69,36 @@ The system follows a data processing pipeline:
 
 This project is developed by two contributors:
 
-| Role                      | Name          | GitHub                                         |
-| ------------------------- | ------------- | ---------------------------------------------- |
-| Product Owner             | Sara EL-ATEIF | [@elateifsara](https://github.com/elateifsara) |
-| Developer & Data Engineer | Majda Bakhari | [@maj-bakh](https://github.com/maj-bakh)       |
+| Role | Name | GitHub |
+|---|---|---|
+| Product Owner | Sara EL-ATEIF | [@elateifsara](https://github.com/elateifsara) |
+| Developer & Data Engineer | Majda Bakhari | [@maj-bakh](https://github.com/maj-bakh) |
 
 ### Roles and Contributions
 
 **Sara EL-ATEIF — Product Owner**
 
-* Provided the initial project idea.
-* Defined and clarified the cultural and religious constraints considered by the project.
-* Contributed to the definition of the project's functional direction and requirements.
+- Provided the initial project idea.
+- Defined and clarified the cultural and religious constraints considered by the project.
+- Contributed to the definition of the project's functional direction and requirements.
 
 **Majda Bakhari — Developer & Data Engineer**
 
-* Designed and implemented the technical pipeline.
-* Developed the data collection, OCR, ingredient processing, and classification components.
-* Implemented the recommendation logic and project structure.
-* Managed the technical integration of the different components.
+- Designed and implemented the technical pipeline.
+- Developed the data collection, OCR, ingredient processing, and classification components.
+- Implemented the recommendation logic and project structure.
+- Managed the technical integration of the different components.
 
 ## Objectives
 
 The main objectives of the project are to:
 
-* Explore the use of RAG-based approaches for personalized nutrition.
-* Combine unstructured social media data with structured ingredient knowledge.
-* Process multilingual food-related content using OCR.
-* Identify potential Halal and Haram ingredients.
-* Provide recommendations according to menstrual cycle phases.
-* Explore the adaptation of AI-based nutrition systems to cultural constraints.
+- Explore the use of RAG-based approaches for personalized nutrition.
+- Combine unstructured social media data with structured ingredient knowledge.
+- Process multilingual food-related content using OCR.
+- Identify potential Halal and Haram ingredients.
+- Provide recommendations according to menstrual cycle phases.
+- Explore the adaptation of AI-based nutrition systems to cultural constraints.
 
 ## Architecture
 
@@ -130,7 +131,7 @@ Cycle Phase Analysis
        |
        v
 Personalized Recommendations
-```
+````
 
 ### System Workflow
 
@@ -422,3 +423,6 @@ GitHub: [@elateifsara](https://github.com/elateifsara)
 
 Developer & Data Engineer
 GitHub: [@maj-bakh](https://github.com/maj-bakh)
+
+```
+```
